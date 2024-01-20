@@ -1,0 +1,39 @@
+---
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+vars:
+  # Directories
+  PRIVATE_DIR: "{{.ROOT_DIR}}/.private"
+  BOOTSTRAP_DIR: "{{.ROOT_DIR}}/bootstrap"
+  KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
+
+  # Files
+  BOOTSTRAP_ADDONS_FILE: "{{.BOOTSTRAP_DIR}}/vars/addons.yaml"
+  BOOTSTRAP_CONFIG_FILE: "{{.BOOTSTRAP_DIR}}/vars/config.yaml"
+  SOPS_AGE_FILE: "{{.ROOT_DIR}}/age.key"
+
+includes:
+  workstation: .taskfiles/workstation/Taskfile.yml
+  sops: .taskfiles/sops/Taskfile.yml
+
+tasks:
+  default: task -l
+
+  init:
+    desc: Initialize files and directories
+    cmds:
+      - cmd: echo === Configuration files copied ===
+        silent: true
+      - mkdir -p {{.PRIVATE_DIR}}
+      - cmd: echo Proceed with updating the configuration files...
+        silent: true
+      - cmd: echo {{.BOOTSTRAP_CONFIG_FILE}}
+        silent: true
+      - cp -n {{.BOOTSTRAP_CONFIG_FILE | replace ".yaml" ".sample.yaml"}} {{.BOOTSTRAP_CONFIG_FILE}}
+      - cmd: echo {{.BOOTSTRAP_ADDONS_FILE}}
+        silent: true
+      - cp -n {{.BOOTSTRAP_ADDONS_FILE | replace ".yaml" ".sample.yaml"}} {{.BOOTSTRAP_ADDONS_FILE}}
+    status:
+      - test -f {{.BOOTSTRAP_ADDONS_FILE}}
+      - test -f {{.BOOTSTRAP_CONFIG_FILE}}
