@@ -30,3 +30,9 @@ cloudflared tunnel login
 cloudflared tunnel create chivel
 cat ~/.cloudflared/*.json
 ```
+
+## Configure cluster
+
+```bash
+task configure
+```

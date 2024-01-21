@@ -4,6 +4,7 @@ version: "3"
 
 vars:
   # Directories
+  ANSIBLE_DIR: "{{.ROOT_DIR}}/ansible"
   PRIVATE_DIR: "{{.ROOT_DIR}}/.private"
   BOOTSTRAP_DIR: "{{.ROOT_DIR}}/bootstrap"
   KUBERNETES_DIR: "{{.ROOT_DIR}}/kubernetes"
@@ -11,9 +12,13 @@ vars:
   # Files
   BOOTSTRAP_ADDONS_FILE: "{{.BOOTSTRAP_DIR}}/vars/addons.yaml"
   BOOTSTRAP_CONFIG_FILE: "{{.BOOTSTRAP_DIR}}/vars/config.yaml"
+  MAKEJINJA_CONFIG_FILE: "{{.BOOTSTRAP_DIR}}/makejinja.toml"
   SOPS_AGE_FILE: "{{.ROOT_DIR}}/age.key"
+  # Binaries
+  PYTHON_BIN: python3.11
 
 includes:
+  ansible: .taskfiles/ansible/Taskfile.yml
   workstation: .taskfiles/workstation/Taskfile.yml
   sops: .taskfiles/sops/Taskfile.yml
 
@@ -37,3 +42,46 @@ tasks:
     status:
       - test -f {{.BOOTSTRAP_ADDONS_FILE}}
       - test -f {{.BOOTSTRAP_CONFIG_FILE}}
+
+  configure:
+    desc: Configure repository from Ansible vars
+    prompt: Any conflicting config in the root kubernetes and ansible directories will be overwritten... continue?
+    cmds:
+      - task: .pre-validate
+      - task: .template
+      # - task: .post-validate
+    # preconditions:
+
+  .pre-validate:
+    internal: true
+    cmd: ./.venv/bin/ansible-playbook {{.BOOTSTRAP_DIR}}/validate.yaml
+    env:
+      ANSIBLE_DISPLAY_SKIPPED_HOSTS: "false"
+    preconditions:
+      - {
+          msg: "Missing virtual environment",
+          sh: "test -d {{.ROOT_DIR}}/.venv",
+        }
+      - {
+          msg: "Missing bootstrap addons file",
+          sh: "test -f {{.BOOTSTRAP_ADDONS_FILE}}",
+        }
+      - {
+          msg: "Missing bootstrap config file",
+          sh: "test -f {{.BOOTSTRAP_CONFIG_FILE}}",
+        }
+
+  .template:
+    internal: true
+    cmds:
+      - ./.venv/bin/makejinja
+      - task: sops:encrypt
+    preconditions:
+      - {
+          msg: "Missing Makejinja config file",
+          sh: "test -f {{.MAKEJINJA_CONFIG_FILE}}",
+        }
+      - {
+          msg: "Missing Makejinja loader file",
+          sh: "test -f {{.BOOTSTRAP_DIR}}/scripts/loader.py",
+        }

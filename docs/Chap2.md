@@ -39,3 +39,9 @@ It's recommended to put the cluster into separate VLAN, it's also personal prefe
 I have a separate TrueNAS server for storage, so I'm using NFS for storage class.
 
 TODO: Configure NFS on TrueNAS with ACL.
+
+## Prep ansible
+
+```bash
+task ansible:deps
+```
