@@ -1,0 +1,22 @@
+---
+kubernetes:
+  children:
+    master:
+      hosts:
+        "pi0":
+          ansible_user: "pi"
+          ansible_host: "10.1.0.20"
+        "pi1":
+          ansible_user: "pi"
+          ansible_host: "10.1.0.21"
+        "pi2":
+          ansible_user: "pi"
+          ansible_host: "10.1.0.22"
+    worker:
+      hosts:
+        "pi3":
+          ansible_user: "pi"
+          ansible_host: "10.1.0.23"
+        "pi4":
+          ansible_user: "pi"
+          ansible_host: "10.1.0.24"

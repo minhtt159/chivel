@@ -42,6 +42,10 @@ TODO: Configure NFS on TrueNAS with ACL.
 
 ## Prep ansible
 
+I need to prepare python environment for jinja template, and install ansible.
+
+So I'm using go-task to install python and ansible.
+
 ```bash
 task ansible:deps
 ```
