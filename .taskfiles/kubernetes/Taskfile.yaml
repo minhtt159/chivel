@@ -3,7 +3,7 @@
 version: "3"
 
 vars:
-  KUBECONFORM_SCRIPT: "{{.TASKFILE_DIR}}/.taskfiles/kubernetes/kubeconform.sh"
+  KUBECONFORM_SCRIPT: "{{.SCRIPTS_DIR}}/kubeconform.sh"
 
 tasks:
   resources:
@@ -30,10 +30,6 @@ tasks:
       - {
           msg: "Missing kubeconform script",
           sh: "test -f {{.KUBECONFORM_SCRIPT}}",
-        }
-      - {
-          msg: "Missing kubernetes directory",
-          sh: "test -d {{.KUBERNETES_DIR}}",
         }
 
   .reset:
