@@ -1,4 +1,4 @@
-# Chapter 2: Prepare for k3s, Networking and Storage
+# Chapter 2: Workstation preparation
 
 ## Prep workstation
 

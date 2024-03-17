@@ -8,7 +8,7 @@ Create nessesary files:
 task init
 ```
 
-Fill in the form [config.yaml](../config.yaml)
+Fill in the form [config.yaml](../config.sample.yaml)
 
 Create age secret key:
 
