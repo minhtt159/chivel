@@ -52,5 +52,5 @@ jobs:
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           title: "${{ env.WORKFLOW_ISSUE_TITLE }}"
-          issue-number: "${{ steps.find-issue.outputs.issue-number || '' }}"
+          issue-number: "${{ steps.find-issue.outputs.issue-number || '2' }}"
           content-filepath: "${{ env.LYCHEE_OUTPUT }}"
