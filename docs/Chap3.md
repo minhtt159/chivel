@@ -1,4 +1,4 @@
-# k0s
+# k3s
 
 ## Initial setup
 

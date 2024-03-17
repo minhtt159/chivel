@@ -4,7 +4,7 @@ Opinionated Kuberenetes cluster on a bunch of Raspberry Pis.
 
 Previously known as [fruitsap](https://github.com/minhtt159/fruitsap); but this time I want to learn for real.
 
-This is a fork from [onedr0p's flux-cluster-template](https://github.com/onedr0p/flux-cluster-template).
+This is a fork from [onedr0p's cluster-template](https://github.com/onedr0p/cluster-template).
 
 Hardware:
 
@@ -22,7 +22,7 @@ Hardware:
 
 HostOS is completely opinionated. You can use Debian if you want, I use Ubuntu 22.04.3 LTS.
 
-There are some caveat if you use different host OS; see original flux-cluster-template for more information.
+There are some caveat if you use different host OS; see original [cluster-template](https://github.com/onedr0p/cluster-template) for more information.
 
 See more at [Chapter 1](./docs/Chap1.md)
 
