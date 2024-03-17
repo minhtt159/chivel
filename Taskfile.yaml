@@ -34,7 +34,6 @@ includes:
     aliases: ["k8s"]
     taskfile: .taskfiles/kubernetes/Taskfile.yaml
   flux: .taskfiles/flux/Taskfile.yaml
-  k0s: .taskfiles/k0s/Taskfile.yaml
   repository:
     aliases: ["repo"]
     taskfile: .taskfiles/repository/Taskfile.yaml
