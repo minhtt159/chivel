@@ -26,13 +26,13 @@ There are some caveat if you use different host OS; see original flux-cluster-te
 
 See more at [Chapter 1](./docs/Chap1.md)
 
-# Chapter 2: Prepare for k0s, Networking and Storage
+# Chapter 2: Prepare for k3s, Networking and Storage
 
 See more at [Chapter 2](./docs/Chap2.md)
 
-# Chapter 3: k0s
+# Chapter 3: k3s
 
-k0s is also opinionated. I'm using [Lens](https://github.com/lensapp/lens) from Mirantis so this would help for metrics and monitoring.
+k3s is also opinionated. I'm using [Lens](https://github.com/lensapp/lens) from Mirantis so this would help for metrics and monitoring.
 
 See more at [Chapter 3](./docs/Chap3.md)
 

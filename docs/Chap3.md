@@ -8,7 +8,7 @@ Create nessesary files:
 task init
 ```
 
-Fill in the form [config.yaml](./bootstrap/vars/config.yaml) & [addons.yaml](./bootstrap/vars/addons.yaml).
+Fill in the form [config.yaml](../config.yaml)
 
 Create age secret key:
 
