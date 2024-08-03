@@ -1,7 +1,11 @@
 ---
 k3s_become: true
+#NOTE: make sure to use 3 controller node quorum
 k3s_etcd_datastore: true
+k3s_use_unsupported_config: false
+# -- Hard links for system-upgrade-controller
 k3s_install_hard_links: true
+# -- kube-vip address
 k3s_registration_address: "10.1.0.6"
 k3s_registries:
   mirrors:
@@ -15,9 +19,10 @@ k3s_registries:
     quay.io:
     registry.k8s.io:
 # renovate: datasource=github-releases depName=k3s-io/k3s
-k3s_release_version: v1.29.3+k3s1
+k3s_release_version: v1.30.3+k3s1
+# Templates file to be installed on primary control plane
 k3s_server_manifests_templates:
   - custom-cilium-helmchart.yaml
+  #TODO: kube-vip helm chart doesn't seem to be maintained
   - custom-kube-vip-ds.yaml
   - custom-kube-vip-rbac.yaml
-k3s_use_unsupported_config: true

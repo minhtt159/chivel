@@ -1,3 +1,4 @@
+# Considering: https://github.com/githubixx/ansible-role-cilium-kubernetes/tree/master
 ---
 - name: Cilium
   block:
@@ -9,6 +10,7 @@
         namespace: kube-system
       register: cilium_helmchart
 
+    # https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/#install-cilium
     - name: Cilium | Wait for Cilium to rollout
       when: cilium_helmchart.resources | count > 0
       kubernetes.core.k8s_info:

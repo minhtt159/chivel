@@ -31,7 +31,7 @@
           vars:
             k3s_state: stopped
 
-    # https://github.com/k3s-io/docs/blob/main/docs/installation/network-options.md
+    # https://docs.k3s.io/networking/basic-network-options#custom-cni
     - name: Networking
       block:
         - name: Networking | Delete Cilium links
