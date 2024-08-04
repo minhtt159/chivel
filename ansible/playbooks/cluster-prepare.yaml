@@ -22,10 +22,40 @@
         - name: Packages | Install
           ansible.builtin.apt:
             name:
-              apt-transport-https,ca-certificates,conntrack,curl,dirmngr,gdisk,gnupg,hdparm,htop,
-              iptables,iputils-ping,ipvsadm,libseccomp2,lm-sensors,net-tools,nfs-common,
-              nvme-cli,open-iscsi,parted,psmisc,python3,python3-apt,python3-kubernetes,python3-yaml,
-              smartmontools,socat,software-properties-common,unzip,util-linux
+              # Libraries
+              - apt-transport-https
+              - ca-certificates
+              - conntrack
+              - libseccomp2
+              - nfs-common
+              - open-iscsi
+              # Disk tools
+              - dirmngr
+              - gdisk
+              - gnupg
+              - hdparm
+              - parted
+              - nvme-cli
+              - smartmontools
+              # OS tools
+              - htop
+              - lm-sensors
+              - curl
+              - iptables
+              - iputils-ping
+              - ipvsadm
+              - net-tools
+              - psmisc
+              - socat
+              - software-properties-common
+              - unzip
+              - util-linux
+              # Python
+              - python3
+              - python3-apt
+              - python3-kubernetes
+              - python3-yaml
+            update_cache: true
             install_recommends: false
 
     - name: Cgroup Configuration
@@ -132,7 +162,7 @@
               fs.inotify.max_queued_events: 65536
               fs.inotify.max_user_watches: 524288
               fs.inotify.max_user_instances: 8192
-  #
+
   handlers:
     - name: Reboot
       ansible.builtin.reboot:

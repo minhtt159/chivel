@@ -23,7 +23,7 @@ spec:
       hostRoot: /sys/fs/cgroup
     cluster:
       id: 1
-      // name: home-kubernetes
+      # name: home-kubernetes
       name: chivel
     containerRuntime:
       integration: containerd
