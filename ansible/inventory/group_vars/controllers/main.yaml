@@ -1,7 +1,9 @@
 ---
 k3s_control_node: true
 k3s_server:
+  # Pod CIDR
   cluster-cidr: "10.69.0.0/16"
+  # Service CIDr
   service-cidr: "10.96.0.0/16"
   disable: [
       "flannel", # Use custom CNI

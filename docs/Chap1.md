@@ -32,7 +32,7 @@ You can use Rasberry Pi Imager to flash the USB/SSD to Ubuntu; or use any other 
 
 1. Use RasPi Imager Tool to flash Ubuntu Server 22.04 LTS
 
-- If you can plug USB/NVME to host machine to flash directly
+- If you can plug USB/NVME into the host machine to flash directly
 - Apply user as your liking, by default, it's root; I will create `pi` user, with ssh_key in known_hosts
 
 Then, follow the rest
@@ -43,7 +43,7 @@ Then, follow the rest
 
 1. Download Ubuntu ISO and flash to the node/VMs
 
-2. [Post install] Remove CD/DVD as apt source
+2. [Post-install] Remove CD/DVD as apt source
 
 ```bash
 su -

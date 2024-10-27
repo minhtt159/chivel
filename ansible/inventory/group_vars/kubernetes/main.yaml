@@ -1,6 +1,6 @@
 ---
 k3s_become: true
-#NOTE: make sure to use 3 controller node quorum
+# NOTE: make sure to use 3 controller node quorum
 k3s_etcd_datastore: true
 k3s_use_unsupported_config: false
 # -- Hard links for system-upgrade-controller
@@ -23,6 +23,6 @@ k3s_release_version: v1.31.1+k3s1
 # Templates file to be installed on primary control plane
 k3s_server_manifests_templates:
   - custom-cilium-helmchart.yaml
-  #TODO: kube-vip helm chart doesn't seem to be maintained
+  # TODO: kube-vip helm chart doesn't seem to be maintained
   - custom-kube-vip-ds.yaml
   - custom-kube-vip-rbac.yaml
